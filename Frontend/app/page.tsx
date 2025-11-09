@@ -1,65 +1,125 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useEffect } from "react";
+import CardBuilder from "./components/-home/CardBuilder";
+import { Container, SimpleGrid, Image, Center, Heading, Box, Separator, Text, Card, useBreakpointValue, Stack, List, ListItem, VStack, AbsoluteCenter, ClientOnly, Skeleton } from "@chakra-ui/react";
 
 export default function Home() {
+
+  const current = useBreakpointValue({
+    base: "base",
+    sm: "sm",
+    md: "md",
+    lg: "lg",
+    xl: "xl",
+    "2xl": "2xl",
+  });
+  useEffect(() => {
+    // Any client-side logic can go here
+    console.log("Current breakpoint:", current);
+  }, [current]);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+
+    <ClientOnly fallback={<Skeleton boxSize="8" />}>
+      <Container fluid id="main" pt={"1vh"}>
+        <Center>
+          {current != "base" && current != "sm" ? (
+            <Box position={"relative"} mb={10}
+              h={"639px"} minW={"80vw"}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              <AbsoluteCenter
+                zIndex={3} h="100%" w={"100%"}
+              >
+                <Image h="100%" w={"100%"}
+                  src={"/hero.jpg"}
+                  _hover={{ opacity: 0, cursor: "pointer" }}
+                  fit={'cover'}
+                  alt="Person looking at laptop with code projecting onto them"
+                // className="absolute inset-0 w-full h-full object-cover object-bottom transition-opacity duration-300 group-hover:opacity-0 z-10"
+                />
+              </AbsoluteCenter>
+              {/* <AbsoluteCenter h="100%" w={"100%"}>
+                <Image h="100%" w={"100%"}
+                  src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGR5b3hzZmgzemRxNWF2c2ZqOXQ5anN0NXhndGN0aHVhcXI5dXQybCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WoD6JZnwap6s8/giphy.gif"
+                  alt="Animated numbers falling vertically" fit={'cover'}
+                // className="absolute inset-0 w-full h-full object-cover object-bottom opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-0"
+                />
+              </AbsoluteCenter> */}
+            </Box>) : (
+            <Box position={"relative"} mb={10}
+              h={"464.094px"} w={"80vw"}
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+              <AbsoluteCenter
+                zIndex={3} h="100%" w={"100%"}
+              >
+                <Image h="100%" w={"100%"}
+                  src={"/hero.jpg"}
+                  _hover={{ opacity: 0, cursor: "pointer" }}
+                  fit={'cover'}
+                  alt="Person looking at laptop with code projecting onto them"
+                // className="absolute inset-0 w-full h-full object-cover object-bottom transition-opacity duration-300 group-hover:opacity-0 z-10"
+                />
+              </AbsoluteCenter>
+              <AbsoluteCenter h="100%" w={"100%"}>
+                <Image h="100%" w={"100%"}
+                  src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGR5b3hzZmgzemRxNWF2c2ZqOXQ5anN0NXhndGN0aHVhcXI5dXQybCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WoD6JZnwap6s8/giphy.gif"
+                  alt="Animated numbers falling vertically" fit={'cover'}
+                // className="absolute inset-0 w-full h-full object-cover object-bottom opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-0"
+                />
+              </AbsoluteCenter>
+
+            </Box>
+          )}
+        </Center>
+
+
+
+        <Card.Root >
+          <Card.Body>
+            <Center>
+              <Heading > Welcome to Coding United</Heading>
+            </Center>
+            <Separator />
+            <Text textAlign={"center"}>
+              A student-led tech club dedicated to building real-world projects,
+              supporting academic success, and growing together through hands-on coding,
+              curiosity, and collaboration. We are not here to fit in. We are here to
+              build, to learn, and to become.
+            </Text>
+          </Card.Body>
+        </Card.Root>
+
+        <Center>
+          <VStack>
+            <Heading>Mission Statement</Heading>
+            <Separator />
+            <Text textAlign={"center"}>Our mission is to foster a vibrant and inclusive community of student developers, empowering everyone with the skills and experience
+              to succeed in the world of technology.
+            </Text>
+          </VStack>
+        </Center>
+        <SimpleGrid columns={[1, null, 3]} gap={5}>
+          <CardBuilder cardInfo={{
+            title: "Club Projects", descriptions: ["Build a strong coding portfolio through group projects", "Join 2–3 active projects maintained by the club", "Work with real, shared codebases", "Gain experience in team collaboration and problem-solving",]
+          }} />
+          <CardBuilder cardInfo={{
+            title: "Open Office Hours", descriptions: ["Online learning can feel isolating — it’s easy to think you’re on your own", "That’s why we created the Open Office Hours initiative", "Drop in anytime for questions, debugging help, or quiet co-working", "Just knowing you’re not alone can make all the difference",]
+          }} />
+          <CardBuilder cardInfo={{
+            title: "Coding Challenges", descriptions: ["Regular coding challenges open to all languages and skill levels", "Designed to push members outside their comfort zones", "Encourages creative problem-solving from multiple perspectives", "Helps develop well-rounded, adaptable developers"]
+          }} />
+          <CardBuilder cardInfo={{
+            title: "Coding Education and Guidance", descriptions: ["We curate free educational resources for all learning paths", "From game development and AI to quantum computing — all are welcome", "Our goal is to make learning accessible, regardless of experience level", "Sometimes the biggest barrier is simply not knowing what’s available"]
+          }} />
+          <CardBuilder cardInfo={{
+            title: "Book Club", descriptions: ["No matter your career path, reading is essential for growth", "Club holds polls to choose relevant topics and books", "Keeping members accountable and engaged", "Learning beyond the standard curriculum"]
+          }} />
+          <CardBuilder cardInfo={{
+            title: "Fostering Leadership", descriptions: ["Opportunities to have your voice heard and contribute", "Lead club projects or take initiative on new ideas", "Assist with administrative tasks and behind-the-scenes coordination", "Build valuable communication and leadership skills along the way"]
+          }} />
+        </SimpleGrid>
+      </Container>
+    </ClientOnly >
   );
 }

@@ -29,9 +29,9 @@ export default function Header() {
     return (
 
         <ClientOnly fallback={<Skeleton boxSize="8" />}>
-            <HStack id="nav" h={"8vh"} justifyContent={'space-between'}>
+            <Box position="relative"><HStack id="nav" h={"8vh"} justifyContent={'space-between'} position={"sticky"} zIndex={4}>
                 <HStack >
-                    <Image src={"/coding_united_icon.72c14269303d.png"} borderRadius={4} />
+                    <Image src={"/coding_united_icon.72c14269303d.png"} borderRadius={4} h={"16%"} w={"16%"} />
                     <Heading>{projectID.title.toUpperCase()}</Heading>
                 </HStack>
                 {
@@ -97,10 +97,9 @@ export default function Header() {
                         </Dialog.Root>
                     ) : null
                 }
-
-
-
             </HStack >
+            </Box>
+
         </ClientOnly >
     );
 }
