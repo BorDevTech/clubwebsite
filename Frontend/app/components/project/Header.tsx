@@ -28,15 +28,15 @@ export default function Header() {
     const { toggleColorMode, colorMode } = useColorMode()
     return (
 
-        <ClientOnly fallback={<Skeleton boxSize="8" />}>
-            <Box position="relative"><HStack id="nav" h={"8vh"} justifyContent={'space-between'} position={"sticky"} zIndex={4}>
-                <HStack >
+        <HStack id="nav" h={"8vh"} w={"100vw"} justifyContent={'space-between'} position={"fixed"} zIndex={3} bgGradient={`to-r`} gradientFrom="purple.800" gradientTo="blue.500">
+            <ClientOnly fallback={<Skeleton boxSize="8" />}>
+                <HStack pl={4}>
                     <Image src={"/coding_united_icon.72c14269303d.png"} borderRadius={4} h={"16%"} w={"16%"} />
                     <Heading>{projectID.title.toUpperCase()}</Heading>
                 </HStack>
                 {
                     current !== "base" && current !== "sm" ? (
-                        <HStack px={"1vh"}>
+                        <HStack pr={8}>
                             {projectID.Navigation.map((navItem, index) => (
                                 <Fragment key={index}>
                                     <ChakraLink asChild aria-current={navItem.path === pathname ? "page" : undefined} color={navItem.path === pathname ? "yellow.200" : undefined} focusRing={'none'}>
@@ -49,22 +49,27 @@ export default function Header() {
                                     {index < projectID.Navigation.length - 1 && <Separator orientation="vertical" />}
                                 </Fragment>
                             ))}
+                            <Text fontSize={'sm'} alignItems={'center'} justifyContent={'center'}>
+                                <IconButton onClick={toggleColorMode} variant="outline" size="sm">
+                                    {colorMode === "light" ? <LuSun /> : <LuMoon />}
+                                </IconButton>
+                            </Text>
                         </HStack>
                     ) : null
                 }
                 {
                     current === "base" || current === "sm" ? (
 
-                        <Dialog.Root size="full" motionPreset="scale">
+                        <Dialog.Root size="full" motionPreset="scale" >
                             <Dialog.Trigger asChild>
                                 <Button variant='solid' size="xs" borderRadius={'base'} mx={"2vh"}>
                                     Menu
                                 </Button>
                             </Dialog.Trigger>
-                            <Portal>
+                            <Portal >
                                 <Dialog.Backdrop />
                                 <Dialog.Positioner>
-                                    <Dialog.Content>
+                                    <Dialog.Content color={colorMode === "light" ? "black" : 'white'}>
                                         <Dialog.Header asChild>
                                             <Center>
                                                 <Dialog.Title>Menu</Dialog.Title>
@@ -83,7 +88,7 @@ export default function Header() {
                                                 </Fragment>
                                             ))}
                                                 <Separator />
-                                                <Text fontSize={'sm'}>Dark Mode: <IconButton onClick={toggleColorMode} variant="outline" size="sm">
+                                                <Text fontSize={'sm'}>{colorMode.charAt(0).toUpperCase() + colorMode.slice(1)} Mode: <IconButton onClick={toggleColorMode} variant="outline" size="sm">
                                                     {colorMode === "light" ? <LuSun /> : <LuMoon />}
                                                 </IconButton> </Text>
                                             </VStack>
@@ -97,9 +102,8 @@ export default function Header() {
                         </Dialog.Root>
                     ) : null
                 }
-            </HStack >
-            </Box>
+            </ClientOnly >
+        </HStack >
 
-        </ClientOnly >
     );
 }
