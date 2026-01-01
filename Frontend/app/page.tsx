@@ -23,70 +23,30 @@ export default function Home() {
         <Box position={'relative'} h={"639px"} minW={"80vw"} >
 
 
-          {current != "base" && current != "sm" ? (
-            <>
-              <AbsoluteCenter zIndex={1} h={"640px"} minW={"80vw"} >
-                <Image h="100%" w={"100%"}
-                  src={"/hero.jpg"}
-                  _hover={{
-                    opacity: 0,
-                    cursor: "pointer",
-                  }}
-                  fit={'cover'}
-                  alt="Person looking at laptop with code projecting onto them"
-                // className="absolute inset-0 w-full h-full object-cover object-bottom transition-opacity duration-300 group-hover:opacity-0 z-10"
-                />
-              </AbsoluteCenter>
-              <AbsoluteCenter h={"639px"} minW={"80vw"} zIndex={0}>
-                <Image h="100%" w={"100%"}
-                  src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGR5b3hzZmgzemRxNWF2c2ZqOXQ5anN0NXhndGN0aHVhcXI5dXQybCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WoD6JZnwap6s8/giphy.gif"
-                  alt="Animated numbers falling vertically" fit={'cover'}
-                // className="absolute inset-0 w-full h-full object-cover object-bottom opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-0"
-                />
-              </AbsoluteCenter>
-            </>
-
-          ) : (
-            <>
-              <AbsoluteCenter zIndex={1} h={"465px"} w={"80vw"}>
-                <Image h="100%" w={"100%"}
-                  src={"/hero.jpg"}
-                  _hover={{ opacity: 0, cursor: "pointer" }}
-                  fit={'cover'}
-                  alt="Person looking at laptop with code projecting onto them"
-                // className="absolute inset-0 w-full h-full object-cover object-bottom transition-opacity duration-300 group-hover:opacity-0 z-10"
-                />
-              </AbsoluteCenter>
-              <AbsoluteCenter h={"464.094px"} w={"80vw"} zIndex={0}>
-                <Image h="100%" w={"100%"}
-                  src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGR5b3hzZmgzemRxNWF2c2ZqOXQ5anN0NXhndGN0aHVhcXI5dXQybCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WoD6JZnwap6s8/giphy.gif"
-                  alt="Animated numbers falling vertically" fit={'cover'}
-                // className="absolute inset-0 w-full h-full object-cover object-bottom opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-0"
-                />
-              </AbsoluteCenter>
-            </>
-          )}
 
           <AbsoluteCenter zIndex={2} w={"80%"} h={"80%"} >
 
-            <Card.Root bgGradient={colorMode === "light" ? "to-r" : "to-l"} gradientFrom={colorMode === "light" ? "purple.800" : "blue.800"} gradientTo={colorMode === "light" ? "blue.500" : "purple.500"} opacity={.8}>
+            <Card.Root bgGradient={colorMode === "light" ? "radial" : "to-l"} gradientFrom={colorMode === "light" ? "purple.300" : "blue.800"} gradientVia={colorMode === "light" ? "#B9C0DE" : "purple.800"} gradientTo={colorMode === "light" ? "blue.500" : "purple.500"} opacity={.8}>
               <Card.Body>
                 <Center>
-                  <Heading textAlign={'center'}>Welcome to Coding United</Heading>
+                  <Heading fontFamily={"oxanium, sans-serif"} textAlign={'center'}>Welcome</Heading>
                 </Center>
                 <Separator />
-                <Text textAlign={"center"}>
-                  A student-led tech club dedicated to building real-world projects,
+                <Text textAlign={"left"}>
+                  We are a student-led tech club dedicated to building real-world projects,
                   supporting academic success, and growing together through hands-on coding,
-                  curiosity, and collaboration. We are not here to fit in. We are here to
-                  build, to learn, and to become.
+                  curiosity, and collaboration.
+                  <br />
+                  We are not here to fit in.
+                  <br />
+                  We are here to build, to learn, and to become.
                 </Text>
               </Card.Body>
             </Card.Root>
           </AbsoluteCenter>
         </Box>
         <VStack>
-          <Heading>Mission Statement</Heading>
+          <Heading fontFamily={"oxanium, sans-serif"}>Mission Statement</Heading>
           <Separator />
           <Text textAlign={"center"}>Our mission is to foster a vibrant and inclusive community of student developers, empowering everyone with the skills and experience
             to succeed in the world of technology.

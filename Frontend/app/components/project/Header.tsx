@@ -7,6 +7,7 @@ import { useState, useEffect, Fragment } from "react";
 import { useColorMode } from "@/components/ui/color-mode"
 import { usePathname } from 'next/navigation'
 import { LuMoon, LuSun } from "react-icons/lu";
+import { Colors, Fonts } from "@/app/Styles";
 
 export default function Header() {
     const [projectID,] = useState(
@@ -28,11 +29,12 @@ export default function Header() {
     const { toggleColorMode, colorMode } = useColorMode()
     return (
 
-        <HStack id="nav" h={"8vh"} w={"100vw"} justifyContent={'space-between'} position={"fixed"} zIndex={3} bgGradient={`to-r`} gradientFrom="purple.800" gradientTo="blue.500">
+        <HStack id="nav" h={"8vh"} w={"100vw"} justifyContent={'space-between'} position={"fixed"} zIndex={3} bg={"blue.950"} boxShadow={"md"}>
             <ClientOnly fallback={<Skeleton boxSize="8" />}>
                 <HStack pl={4}>
+                    {/* <Box borderRadius={4} h={12} w={12} bg={""} /> */}
                     <Image src={"/coding_united_icon.72c14269303d.png"} borderRadius={4} h={"16%"} w={"16%"} />
-                    <Heading>{projectID.title.toUpperCase()}</Heading>
+                    <Heading color={"EBF1FF"} fontFamily={"oxanium, sans-serif"} size={"sm"}>{projectID.title.toUpperCase()}</Heading>
                 </HStack>
                 {
                     current !== "base" && current !== "sm" ? (
