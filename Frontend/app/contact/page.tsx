@@ -11,9 +11,32 @@ import {
     NativeSelect,
     Stack, Card
 } from "@chakra-ui/react"
+import { useState } from "react";
+
+/**
+ * @param contact page - form to collect user information
+ * 
+ */
 
 
 export default function Contact() {
+
+    const [contactForm, setContactForm] = useState({
+        fname: "",
+        lname: "",
+        email: "",
+        join: "",
+        event: "",
+        comment: "",
+    });
+
+    // NEEDS: create a validator for @snhu.edu email addresses by checking last 9 characters against roster email field with fetch loading
+
+    const [validEmail, setValidEmail] = useState(contactForm.email ? true : false);
+
+
+
+    const projects = ["Mokse", "Coding United Club", "Astray"];
     return (
         <>
             <AbsoluteCenter>
@@ -30,19 +53,34 @@ export default function Contact() {
                             <Fieldset.Content>
                                 <Field.Root>
                                     <Field.Label>Name</Field.Label>
-                                    <Input name="name" />
+                                    <Input
+                                        name="name"
+                                        onChange={
+                                            ({ target }: React.ChangeEvent<HTMLInputElement>) =>
+                                                setContactForm((prev) => ({ ...prev, fname: target.value }))}
+                                        value={contactForm.fname} />
                                 </Field.Root>
 
                                 <Field.Root>
                                     <Field.Label>Email address</Field.Label>
-                                    <Input name="email" type="email" />
+                                    <Input
+                                        name="email"
+                                        type="email"
+                                        onChange={
+                                            ({ target }: React.ChangeEvent<HTMLInputElement>) =>
+                                                setContactForm((prev) => ({ ...prev, email: target.value }))}
+                                        value={contactForm.email}
+                                        placeholder="example@snhu.edu" />
                                 </Field.Root>
 
                                 <Field.Root>
-                                    <Field.Label>Country</Field.Label>
+                                    <Field.Label>Projects</Field.Label>
                                     <NativeSelect.Root>
-                                        <NativeSelect.Field name="country">
-                                            <For each={["United Kingdom", "Canada", "United States"]}>
+                                        <NativeSelect.Field name="projects" onChange={(e) => setContactForm((prev) => ({
+                                            ...prev,
+                                            event: e.target.value,
+                                        }))}>
+                                            <For each={projects}>
                                                 {(item) => (
                                                     <option key={item} value={item}>
                                                         {item}
@@ -61,7 +99,7 @@ export default function Contact() {
                         </Fieldset.Root>
                     </Card.Body>
                 </Card.Root>
-            </AbsoluteCenter>
+            </AbsoluteCenter >
         </>
     )
 }

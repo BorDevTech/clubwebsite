@@ -33,7 +33,7 @@ export default function Header() {
             <ClientOnly fallback={<Skeleton boxSize="8" />}>
                 <HStack pl={4}>
                     {/* <Box borderRadius={4} h={12} w={12} bg={""} /> */}
-                    <Image src={"/coding_united_icon.72c14269303d.png"} borderRadius={4} h={"16%"} w={"16%"} />
+                    <Image src={"/images/codingUnited_Logo.png"} borderRadius={4} h={50} w={50} aspectRatio={"auto"} />
                     <Heading color={"EBF1FF"} fontFamily={"oxanium, sans-serif"} size={"sm"}>{projectID.title.toUpperCase()}</Heading>
                 </HStack>
                 {
