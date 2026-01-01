@@ -21,7 +21,7 @@ export default function Home() {
     <ClientOnly fallback={<Skeleton boxSize="8" />}>
       <Container fluid id="main" pt={"1vh"} color="primary">
         <Box position={'relative'} h={"639px"} minW={"80vw"} >
-
+          <Image src={'/images/bryton_sarrell.png'} />
 
 
           <AbsoluteCenter zIndex={2} w={"80%"} h={"80%"} >
