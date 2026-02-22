@@ -4,12 +4,12 @@ export default function Faqs() {
     <>
       <div>
         {faqs.map((index) => (
-          <>
+          <div key={index}>
             <div>{index.title}</div>
             <div>{index.response}</div>
             <div>{index.date.split("T")[0]}</div>
             <div>{index.category}</div>
-          </>
+          </div>
         ))}
       </div>
     </>
